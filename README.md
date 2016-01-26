@@ -1,6 +1,6 @@
 ## Simple sequence
 
-Repo with a few simple functions to help manage asynchronous flow.
+Repo with a few simple functions to help manage flow.
 
 ##### eachSeries
   This function runs a function(s), and checks the return value to determine if the next should be run.
