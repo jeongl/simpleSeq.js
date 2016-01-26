@@ -19,9 +19,9 @@
 			}
 		}
 
-		var out = seq.parallel([
+		var out = seq.eachSeries([
 			function step1(){
-				return seq.parallel([ 
+				return seq.eachSeries([ 
 					fns.step1a,
 					fns.step1b
 				])
@@ -38,7 +38,7 @@
 
 		console.log('out: ', out );
 
-		seq.series([
+		seq.seriesAsync([
 			function seriesFn1(){
 				var self = this;
 				setTimeout(function(){
