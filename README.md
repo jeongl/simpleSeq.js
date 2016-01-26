@@ -43,23 +43,23 @@ console.log('out: ', out);
   This function runs a function(s) sequentially, but only calls the next one in the list when the done() method is called.
   
 ```javascript
-	seq.seriesAsync([
-		function seriesFn1(){
-			var self = this;
-			setTimeout(function(){
-				console.log('seriesFn1: '  );
-				self.done();  //  After two seconds, the done method is called, advancing to seriesFn2()
-			}, 2000);
-		},
-		function seriesFn2(){
-			var self = this;
-			setTimeout(function(){
-				console.log('seriesFn2: ');
-				self.done();  //  After two seconds, the done method is called, advancing to seriesFn3()
-			}, 2000)
-		},
-		function seriesFn3(){
-			console.log('seriesFn3: ');
-		}	
-	]);
+seq.seriesAsync([
+	function seriesFn1(){
+		var self = this;
+		setTimeout(function(){
+			console.log('seriesFn1: '  );
+			self.done();  //  After two seconds, the done method is called, advancing to seriesFn2()
+		}, 2000);
+	},
+	function seriesFn2(){
+		var self = this;
+		setTimeout(function(){
+			console.log('seriesFn2: ');
+			self.done();  //  After two seconds, the done method is called, advancing to seriesFn3()
+		}, 2000)
+	},
+	function seriesFn3(){
+		console.log('seriesFn3: ');
+	}	
+]);
 ```
