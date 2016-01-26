@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="lib/simpleSeq.js"></script>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		var fns = {
+			step1a: function step1a(){
+				console.log('step1a: ');
+				return true;
+			},
+			step1b: function step1b(){
+				console.log('step1b: ');
+				return true;
+			}
+		}
+
+		var out = seq.parallel([
+			function step1(){
+				return seq.parallel([ 
+					fns.step1a,
+					fns.step1b
+				])
+			},
+			function step2(){
+				console.log('step2: ');
+				return true;
+			},
+			function step3(){
+				console.log('step3: ');
+				return true;
+			}
+		]);
+
+		console.log('out: ', out );
+
+		seq.series([
+			function seriesFn1(){
+				var self = this;
+				setTimeout(function(){
+					console.log('seriesFn1: '  );
+					self.done();
+				}, 2000);
+			},
+			function seriesFn2(){
+				var self = this;
+				setTimeout(function(){
+					console.log('seriesFn2: ');
+					self.done();
+				}, 2000)
+			},
+			function seriesFn3(){
+				console.log('seriesFn3: ');
+			}	
+		]);
+
+		
+
+	</script>
+
+</body>
+</html>
